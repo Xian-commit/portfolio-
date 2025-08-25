@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academic Portfolio — Your Name</title>
+  <meta name="description" content="Academic portfolio of Your Name — education, research, publications, projects, and contact." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🎓%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --surface: #13151a;
+      --surface-2: #1a1d24;
+      --text: #e8ecf1;
+      --muted: #b8c0cc;
+      --brand: #6ea8fe;
+      --accent: #7ee787;
+      --warn: #ffad60;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb; --surface: #ffffff; --surface-2:#f1f3f7; --text:#0f172a; --muted:#475569; --brand:#1e40af; --accent:#047857; --warn:#b45309;
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:radial-gradient(1200px 400px at 20% -10%,rgba(110,168,254,.15),transparent), radial-gradient(800px 300px at 120% 10%,rgba(126,231,135,.12),transparent), var(--bg);}    
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:color-mix(in oklab, var(--surface), transparent 22%); border-bottom:1px solid color-mix(in oklab, var(--text), transparent 90%)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand .logo{width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--accent)); color:white; box-shadow:var(--shadow)}
+    .nav a.btn{padding:10px 14px; border-radius:999px; background:var(--surface-2); border:1px solid color-mix(in oklab, var(--text), transparent 88%); text-decoration:none}
+    .nav a.btn:hover{background:color-mix(in oklab, var(--surface-2), white 6%)}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.3fr .7fr; gap:28px; align-items:center; padding-top:28px}
+    .card{background:var(--surface); border:1px solid color-mix(in oklab, var(--text), transparent 90%); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card .in{padding:28px}
+    .kpis{display:flex; gap:14px; flex-wrap:wrap; margin-top:18px}
+    .kpi{flex:1; min-width:180px; padding:16px; border-radius:14px; background:var(--surface-2); border:1px solid color-mix(in oklab, var(--text), transparent 90%)}
+    .kpi b{font-size:22px}
+
+    /* Sections */
+    section{margin-top:36px}
+    h2{margin:0 0 12px; letter-spacing:.2px}
+    .grid{display:grid; gap:16px}
+    .two{grid-template-columns:1fr 1fr}
+    .three{grid-template-columns:repeat(3, 1fr)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.two,.three{grid-template-columns:1fr}}
+
+    .item{padding:18px; border-radius:14px; background:var(--surface); border:1px solid color-mix(in oklab, var(--text), transparent 90%)}
+    .meta{color:var(--muted); font-size:14px}
+    .tag{display:inline-block; padding:4px 10px; border-radius:999px; background:var(--surface-2); border:1px solid color-mix(in oklab, var(--text), transparent 88%); font-size:12px; margin-right:6px}
+
+    /* Footer */
+    footer{margin:48px 0 16px; text-align:center; color:var(--muted)}
+
+    /* Print */
+    @media print{
+      header, .nav-actions, .theme-toggle{display:none !important}
+      body{background:white}
+      .card,.item{box-shadow:none}
+    }
+
+    /* Minor niceties */
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:var(--surface-2); border:1px solid color-mix(in oklab, var(--text), transparent 88%)}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .right{margin-left:auto}
+    .muted{color:var(--muted)}
+    .theme-toggle{cursor:pointer}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🎓</div>
+        <div>
+          <div>Your Name</div>
+          <small class="muted">Academic Portfolio</small>
+        </div>
+      </div>
+      <nav class="row nav-actions" aria-label="Primary">
+        <a class="btn" href="#education">Education</a>
+        <a class="btn" href="#research">Research</a>
+        <a class="btn" href="#publications">Publications</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn" href="#contact">Contact</a>
+        <button id="themeBtn" class="btn theme-toggle" aria-label="Toggle dark/light">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="card">
+        <div class="in">
+          <div class="row">
+            <span class="pill">📍 City, Country</span>
+            <span class="pill">🎓 Program / Position</span>
+            <a class="pill right" href="#contact">Open to opportunities →</a>
+          </div>
+          <h1 style="margin:12px 0 6px; font-size:38px; line-height:1.15">Your Name</h1>
+          <p class="muted" style="max-width:60ch">Brief academic bio (2–3 lines). Mention your research interests, lab/group, advisor (if applicable), and high‑level goals.</p>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="muted">Publications</div>
+              <b>5</b>
+            </div>
+            <div class="kpi">
+              <div class="muted">Citations</div>
+              <b>120+</b>
+            </div>
+            <div class="kpi">
+              <div class="muted">Talks</div>
+              <b>8</b>
+            </div>
+            <div class="kpi">
+              <div class="muted">Awards</div>
+              <b>3</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="in">
+          <img alt="Portrait of Your Name" src="https://picsum.photos/600/600" style="width:100%; height:auto; border-radius:14px;" />
+          <div class="row" style="margin-top:12px; justify-content:space-between">
+            <a class="btn" href="#contact">Email</a>
+            <a class="btn" href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="grid two">
+        <article class="item">
+          <div class="row"><strong>M.S., Computer Science</strong> <span class="right meta">2023 – 2025</span></div>
+          <div class="meta">University Name • Advisor: Dr. X</div>
+          <div>Thesis: <em>Title of your thesis</em></div>
+          <div class="meta">Relevant coursework: ML, Algorithms, Systems</div>
+        </article>
+        <article class="item">
+          <div class="row"><strong>B.S., Computer Science</strong> <span class="right meta">2019 – 2023</span></div>
+          <div class="meta">University Name • GPA: 3.8/4.0</div>
+          <div>Honors: Dean's List (4x); Scholarship Recipient</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research">
+      <h2>Research Experience</h2>
+      <div class="grid two">
+        <article class="item">
+          <div class="row"><strong>Research Assistant, Lab Name</strong> <span class="right meta">2024 – Present</span></div>
+          <div class="meta">Institution • Topic: [e.g., NLP for Education]</div>
+          <ul>
+            <li>Designed method X improving metric Y by 12% on benchmark Z.</li>
+            <li>Co-authored 2 papers; led experiments and ablations.</li>
+            <li>Stack: Python, PyTorch, Hugging Face, Docker.</li>
+          </ul>
+        </article>
+        <article class="item">
+          <div class="row"><strong>Undergraduate Researcher</strong> <span class="right meta">2022 – 2023</span></div>
+          <div class="meta">Institution • Topic: [e.g., HCI + Accessibility]</div>
+          <ul>
+            <li>Built prototype system with 50 pilot users; analyzed feedback.</li>
+            <li>Presented a poster at ABC 2023; won Best Poster.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="grid">
+        <article class="item">
+          <div><strong>Author, Author</strong> (2025). "Paper Title." <em>Conference/Journal</em>. <a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">BibTeX</a></div>
+          <div class="meta">Keywords: LLMs, Education, Evaluation</div>
+        </article>
+        <article class="item">
+          <div><strong>Author, Author</strong> (2024). "Paper Title 2." <em>Venue</em>. <a href="#">PDF</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid two">
+        <article class="item">
+          <div class="row"><strong>Project A</strong> <span class="right"><span class="tag">Java</span> <span class="tag">Spring</span></span></div>
+          <p>One‑sentence summary of what the project does and why it matters. Link to code/demo below.</p>
+          <a href="#">Repository →</a>
+        </article>
+        <article class="item">
+          <div class="row"><strong>Project B</strong> <span class="right"><span class="tag">Python</span> <span class="tag">PyTorch</span></span></div>
+          <p>Short description and notable results (e.g., 95% accuracy on XYZ).</p>
+          <a href="#">Demo →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Talks -->
+    <section id="talks">
+      <h2>Talks & Presentations</h2>
+      <div class="grid">
+        <article class="item">
+          <div class="row"><strong>Invited Talk: Title</strong> <span class="right meta">May 2025 • Event/Org</span></div>
+          <div>Slides: <a href="#">PDF</a> · Recording: <a href="#">Link</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid three">
+        <div class="item">
+          <strong>Programming</strong>
+          <div class="meta">Python, Java, C/C++, JavaScript</div>
+        </div>
+        <div class="item">
+          <strong>Tools</strong>
+          <div class="meta">Git, Docker, Linux, LaTeX</div>
+        </div>
+        <div class="item">
+          <strong>Other</strong>
+          <div class="meta">Public Speaking, Teaching, Writing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards / Activities -->
+    <section id="awards">
+      <h2>Awards & Service</h2>
+      <div class="grid two">
+        <div class="item">
+          <ul>
+            <li>Best Paper Award — Venue 2024</li>
+            <li>Dean's List — 2020–2023</li>
+          </ul>
+        </div>
+        <div class="item">
+          <ul>
+            <li>Reviewer — Journal/Conference</li>
+            <li>Volunteer — STEM Outreach</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="item">
+        <p>Email: <a href="mailto:your.name@university.edu">your.name@university.edu</a></p>
+        <p>Office: Building, Room • Office hours by appointment.</p>
+        <form onsubmit="event.preventDefault(); location.href='mailto:your.name@university.edu?subject=' + encodeURIComponent(this.subject.value) + '&body=' + encodeURIComponent(this.message.value);">
+          <div class="grid two" style="gap:12px">
+            <input required name="subject" placeholder="Subject" aria-label="Subject" class="item" style="padding:12px; border:none; outline: none" />
+            <input name="from" placeholder="Your email (optional)" aria-label="Your email" class="item" style="padding:12px; border:none; outline: none" />
+          </div>
+          <textarea required name="message" placeholder="Your message" aria-label="Message" rows="5" class="item" style="margin-top:12px; padding:12px; width:100%; border:none; outline: none"></textarea>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" type="submit">Send via Email</button>
+            <a class="btn" href="#" onclick="window.print(); return false;">Print / Save as PDF</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Your Name · Built with a single HTML file
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dark/Light toggle with localStorage
+    const btn = document.getElementById('themeBtn');
+    const KEY = 'theme-preference';
+    const getPref = () => localStorage.getItem(KEY);
+    const setPref = (v) => localStorage.setItem(KEY, v);
+
+    const applyTheme = (mode) => {
+      if(mode==='light'){
+        document.documentElement.style.setProperty('--bg', '#f7f8fb');
+        document.documentElement.style.setProperty('--surface', '#ffffff');
+        document.documentElement.style.setProperty('--surface-2', '#f1f3f7');
+        document.documentElement.style.setProperty('--text', '#0f172a');
+        document.documentElement.style.setProperty('--muted', '#475569');
+        document.documentElement.style.setProperty('--brand', '#1e40af');
+        document.documentElement.style.setProperty('--accent', '#047857');
+        document.documentElement.style.setProperty('--warn', '#b45309');
+      } else {
+        document.documentElement.style.setProperty('--bg', '#0b0c10');
+        document.documentElement.style.setProperty('--surface', '#13151a');
+        document.documentElement.style.setProperty('--surface-2', '#1a1d24');
+        document.documentElement.style.setProperty('--text', '#e8ecf1');
+        document.documentElement.style.setProperty('--muted', '#b8c0cc');
+        document.documentElement.style.setProperty('--brand', '#6ea8fe');
+        document.documentElement.style.setProperty('--accent', '#7ee787');
+        document.documentElement.style.setProperty('--warn', '#ffad60');
+      }
+    };
+
+    const init = () => {
+      const pref = getPref();
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(pref || (systemDark ? 'dark' : 'light'));
+    };
+
+    btn?.addEventListener('click', () => {
+      const current = getPref() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      setPref(next); applyTheme(next);
+    });
+
+    init();
+  </script>
+</body>
+</html>
